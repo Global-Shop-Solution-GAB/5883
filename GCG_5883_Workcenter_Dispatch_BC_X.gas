@@ -1,0 +1,770 @@
+Program.Sub.ScreenSU.Start
+gui.SS_Form1..create
+gui.SS_Form1..caption("Workcenter Dispatch Extended Barcodes")
+gui.SS_Form1..size(6160,5525)
+gui.SS_Form1..position(0,0)
+gui.SS_Form1..alwaysontop(False)
+gui.SS_Form1..fontname("Arial")
+gui.SS_Form1..fontsize(8)
+gui.SS_Form1..forecolor(0)
+gui.SS_Form1..fontstyle(,,,,)
+gui.SS_Form1..BackColor(-2147483633)
+gui.SS_Form1..controlbox(True)
+gui.SS_Form1..maxbutton(False)
+gui.SS_Form1..minbutton(False)
+gui.SS_Form1..mousepointer(0)
+gui.SS_Form1..moveable(True)
+gui.SS_Form1..sizeable(False)
+gui.SS_Form1..ShowInTaskBar(True)
+gui.SS_Form1..titlebar(True)
+gui.SS_Form1..event(unload,ss_form1_unload)
+gui.SS_Form1.lbl_dtp_Beg.create(label,"Beginning Date",True,1800,200,1,100,135,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.dtp_Beg.create(datepicker)
+gui.SS_Form1.dtp_Beg.visible(True)
+gui.SS_Form1.dtp_Beg.size(1800,345)
+gui.SS_Form1.dtp_Beg.position(100,335)
+gui.SS_Form1.dtp_Beg.enabled(True)
+gui.SS_Form1.dtp_Beg.fontname("Arial")
+gui.SS_Form1.lbl_dtp_Beg.LabelStretch(True)
+gui.SS_Form1.lbl_dtp_Beg.setinternationalid(61200)
+gui.SS_Form1.lbl_dtp_End.create(label,"Ending Date",True,1800,200,1,1985,135,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.dtp_End.create(datepicker)
+gui.SS_Form1.dtp_End.visible(True)
+gui.SS_Form1.dtp_End.size(1800,345)
+gui.SS_Form1.dtp_End.position(1985,335)
+gui.SS_Form1.dtp_End.enabled(True)
+gui.SS_Form1.dtp_End.fontname("Arial")
+gui.SS_Form1.lbl_dtp_End.LabelStretch(True)
+gui.SS_Form1.lbl_dtp_End.setinternationalid(213100)
+gui.SS_Form1.lbl_txt_BegWC.create(label,"Beginning Workcenter",True,1800,200,1,100,850,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.lbl_txt_BegWC.LabelStretch(True)
+gui.SS_Form1.lbl_txt_BegWC.setinternationalid(64800)
+gui.SS_Form1.txt_BegWC.create(textbox,"",True,1800,330,1,100,1050,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txt_BegWC.event(gotfocus,txt_begwc_gotfocus)
+gui.SS_Form1.txt_BegWC.event(lostfocus,txt_begwc_lostfocus)
+Gui.SS_Form1.cmd_txt_BegWC.create(button)
+gui.SS_Form1.cmd_txt_BegWC.Caption("^")
+gui.SS_Form1.cmd_txt_BegWC.visible(True)
+gui.SS_Form1.cmd_txt_BegWC.size(330,330)
+gui.SS_Form1.cmd_txt_BegWC.position(1985,1050)
+gui.SS_Form1.cmd_txt_BegWC.enabled(True)
+gui.SS_Form1.cmd_txt_BegWC.fontname("Arial")
+gui.SS_Form1.cmd_txt_BegWC.fontsize(8)
+gui.SS_Form1.cmd_txt_BegWC.event(click,cmd_txt_begwc_click)
+gui.SS_Form1.lbl_txt2_EndWC.create(label,"Ending Workcenter",True,1800,200,1,2455,850,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.lbl_txt2_EndWC.LabelStretch(True)
+gui.SS_Form1.lbl_txt2_EndWC.setinternationalid(217200)
+gui.SS_Form1.txt2_EndWC.create(textbox,"",True,1800,330,1,2455,1050,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txt2_EndWC.event(gotfocus,txt2_endwc_gotfocus)
+Gui.SS_Form1.cmd_txt2_EndWC.create(button)
+gui.SS_Form1.cmd_txt2_EndWC.Caption("^")
+gui.SS_Form1.cmd_txt2_EndWC.visible(True)
+gui.SS_Form1.cmd_txt2_EndWC.size(330,330)
+gui.SS_Form1.cmd_txt2_EndWC.position(4340,1050)
+gui.SS_Form1.cmd_txt2_EndWC.enabled(True)
+gui.SS_Form1.cmd_txt2_EndWC.fontname("Arial")
+gui.SS_Form1.cmd_txt2_EndWC.fontsize(8)
+gui.SS_Form1.cmd_txt2_EndWC.event(click,cmd_txt2_endwc_click)
+gui.SS_Form1.chk1_AllWC.create(checkbox)
+gui.SS_Form1.chk1_AllWC.Caption("All Workcenters")
+gui.SS_Form1.chk1_AllWC.visible(True)
+gui.SS_Form1.chk1_AllWC.size(3600,300)
+gui.SS_Form1.chk1_AllWC.position(100,1385)
+gui.SS_Form1.chk1_AllWC.enabled(True)
+gui.SS_Form1.chk1_AllWC.fontname("Arial")
+gui.SS_Form1.chk1_AllWC.fontsize(8)
+gui.SS_Form1.chk1_AllWC.setinternationalid(23700)
+gui.SS_Form1.chk1_AllWC.event(click,chk1_allwc_click)
+gui.SS_Form1.lvw1_Wc.create(listview)
+gui.SS_Form1.lvw1_Wc.view(3)
+gui.SS_Form1.lvw1_Wc.visible(True)
+gui.SS_Form1.lvw1_Wc.size(5810,2000)
+gui.SS_Form1.lvw1_Wc.position(100,1935)
+gui.SS_Form1.lvw1_Wc.enabled(True)
+gui.SS_Form1.lvw1_Wc.fontname("Arial")
+gui.SS_Form1.lvw1_Wc.fontsize(8)
+gui.SS_Form1.lvw1_Wc.addlistviewcolumn(variable.Translation.64800,2705,0)
+gui.SS_Form1.lvw1_Wc.addlistviewcolumn(variable.Translation.217200,2705,0)
+Gui.SS_Form1.cmd_lvw1_WcAdd.create(button)
+gui.SS_Form1.cmd_lvw1_WcAdd.Caption("Add")
+gui.SS_Form1.cmd_lvw1_WcAdd.visible(True)
+gui.SS_Form1.cmd_lvw1_WcAdd.size(1000,330)
+gui.SS_Form1.cmd_lvw1_WcAdd.position(4810,1050)
+gui.SS_Form1.cmd_lvw1_WcAdd.enabled(True)
+gui.SS_Form1.cmd_lvw1_WcAdd.fontname("Arial")
+gui.SS_Form1.cmd_lvw1_WcAdd.fontsize(8)
+gui.SS_Form1.cmd_lvw1_WcAdd.setinternationalid(7600)
+gui.SS_Form1.cmd_lvw1_Wcadd.event(click,cmd_lvw1_wcadd_click)
+Gui.SS_Form1.cmd_lvw1_WcDelete.create(button)
+gui.SS_Form1.cmd_lvw1_WcDelete.Caption("Delete")
+gui.SS_Form1.cmd_lvw1_WcDelete.visible(True)
+gui.SS_Form1.cmd_lvw1_WcDelete.size(1000,330)
+gui.SS_Form1.cmd_lvw1_WcDelete.position(100,4020)
+gui.SS_Form1.cmd_lvw1_WcDelete.enabled(True)
+gui.SS_Form1.cmd_lvw1_WcDelete.fontname("Arial")
+gui.SS_Form1.cmd_lvw1_WcDelete.fontsize(8)
+gui.SS_Form1.cmd_lvw1_WcDelete.setinternationalid(171500)
+gui.SS_Form1.cmd_lvw1_Wcdelete.event(click,cmd_lvw1_wcdelete_click)
+Gui.SS_Form1.cmd_lvw1_WcClear.create(button)
+gui.SS_Form1.cmd_lvw1_WcClear.Caption("Clear")
+gui.SS_Form1.cmd_lvw1_WcClear.visible(True)
+gui.SS_Form1.cmd_lvw1_WcClear.size(1000,330)
+gui.SS_Form1.cmd_lvw1_WcClear.position(1185,4020)
+gui.SS_Form1.cmd_lvw1_WcClear.enabled(True)
+gui.SS_Form1.cmd_lvw1_WcClear.fontname("Arial")
+gui.SS_Form1.cmd_lvw1_WcClear.fontsize(8)
+gui.SS_Form1.cmd_lvw1_WcClear.setinternationalid(106700)
+gui.SS_Form1.cmd_lvw1_Wcclear.event(click,cmd_lvw1_wcclear_click)
+gui.SS_Form1.cmd1_Print.create(button)
+gui.SS_Form1.cmd1_Print.Caption("Print")
+gui.SS_Form1.cmd1_Print.visible(True)
+gui.SS_Form1.cmd1_Print.size(1000,360)
+gui.SS_Form1.cmd1_Print.position(100,4550)
+gui.SS_Form1.cmd1_Print.enabled(True)
+gui.SS_Form1.cmd1_Print.fontname("Arial")
+gui.SS_Form1.cmd1_Print.fontsize(8)
+gui.SS_Form1.cmd1_Print.setinternationalid(452800)
+gui.SS_Form1.cmd1_Print.event(click,cmd1_print_click)
+gui.SS_Form1.dtp_Beg.tabstop(true)
+gui.SS_Form1.dtp_Beg.tabindex(1)
+gui.SS_Form1.dtp_End.tabstop(true)
+gui.SS_Form1.dtp_End.tabindex(2)
+gui.SS_Form1.txt_BegWC.tabstop(true)
+gui.SS_Form1.txt_BegWC.tabindex(3)
+gui.SS_Form1.cmd_txt_BegWC.tabstop(true)
+gui.SS_Form1.cmd_txt_BegWC.tabindex(4)
+gui.SS_Form1.txt2_EndWC.tabstop(true)
+gui.SS_Form1.txt2_EndWC.tabindex(5)
+gui.SS_Form1.cmd_txt2_EndWC.tabstop(true)
+gui.SS_Form1.cmd_txt2_EndWC.tabindex(6)
+gui.SS_Form1.cmd_lvw1_WcAdd.tabstop(true)
+gui.SS_Form1.cmd_lvw1_WcAdd.tabindex(7)
+gui.SS_Form1.chk1_AllWC.tabstop(true)
+gui.SS_Form1.chk1_AllWC.tabindex(8)
+gui.SS_Form1.cmd1_Print.tabstop(true)
+gui.SS_Form1.cmd1_Print.tabindex(9)
+
+
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Variable.UDT.uWC.Define("RUNID",LONG,"RUNID")
+Variable.UDT.uWC.Define("GROUPING",STRING,"GROUPING")
+Variable.UDT.uWC.Define("JOB",STRING,"JOB")
+Variable.UDT.uWC.Define("SUFFIX",STRING,"SUFFIX")
+Variable.UDT.uWC.Define("SEQ",STRING,"SEQ")
+Variable.UDT.uWC.Define("PRIORITY",STRING,"PRIORITY")
+Variable.UDT.uWC.Define("LHR",STRING,"LHR")
+Variable.UDT.uWC.Define("PART",STRING,"PART")
+Variable.UDT.uWC.Define("JOBOPDESC",STRING,"JOBOPDESC")
+Variable.UDT.uWC.Define("CUSTOMERNAME",STRING,"CUSTOMERNAME")
+Variable.UDT.uWC.Define("CUSTNO",STRING,"CUSTNO")
+Variable.UDT.uWC.Define("WC",STRING,"WC")
+Variable.UDT.uWC.Define("QTYREM",FLOAT,"QTYREM")
+Variable.UDT.uWC.Define("QTYORIG",FLOAT,"QTYORIG")
+Variable.UDT.uWC.Define("ESTHOURS",FLOAT,"ESTHOURS")
+Variable.UDT.uWC.Define("REMHOURS",FLOAT,"REMHOURS")
+Variable.UDT.uWC.Define("SEQSTARTDATE",STRING,"SEQSTARTDATE")
+Variable.UDT.uWC.Define("SEQDUEDATE",STRING,"SEQDUEDATE")
+Variable.UDT.uWC.Define("JOBDUEDATE",STRING,"JOBDUEDATE")
+Variable.UDT.uWC.Define("PREVSEQINFO",STRING,"PREVSEQINFO")
+Variable.UDT.uWC.Define("READY",STRING,"READY")
+Variable.uGlobal.uWC.Declare("uWc")
+
+Variable.UDT.uMachines.Define("MACHINE",STRING,"MACHINE")
+Variable.uGlobal.uMachines.Declare("uMachines")
+
+Variable.Global.iBIRUNID.Declare(Long,0)
+Variable.Global.iLOGID.Declare(Long,0)
+Variable.Global.iKey.Declare(Long,0)
+Variable.Global.sRange.Declare(String)
+
+Variable.Global.sDate1.Declare(String)
+Variable.Global.sDate2.Declare(String)
+
+Variable.Global.sMultiWORange.Declare(String)
+Variable.Global.iRangeSeq.Declare(Long,0)
+Variable.Global.iRange.Declare(Long,0)
+Variable.Global.iWCNum.Declare(Long,0)
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.Intrinsic.Control.SetErrorHandler("Main_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+V.Global.iWCNum.Set(-1)
+
+'Establishing connection to pervasive.
+F.ODBC.Connection!conx.OpenConnection(V.Ambient.PDSN,V.Ambient.puser,V.Ambient.PPass,32500)
+F.Intrinsic.Task.SetEnvironmentVariable("APS3DB","PSQL")
+Gui.SS_Form1..applytranslation
+Gui.SS_Form1.lvw1_Wc.ClearItems
+Gui.SS_Form1..Show
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Main_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: BIR_CP_Workcenter_Dispatch_BC_X.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.Main.End
+
+program.sub.ss_form1_unload.start
+F.Intrinsic.Control.SetErrorHandler("ss_form1_unload_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Ends the program
+F.ODBC.Connection!conx.Close
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("ss_form1_unload_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: BIR_CP_Workcenter_Dispatch_BC_X.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.ss_form1_unload.end
+
+Program.Sub.cmd_txt_BegWC_Click.Start
+F.Intrinsic.Control.SetErrorHandler("cmd_txt_BegWC_Click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+V.Local.sRet.Declare(String)
+
+F.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+F.Intrinsic.UI.Browser(400,"",V.Local.sRet)
+
+'Beginning workcenter browser
+F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	Gui.SS_Form1.txt_BegWC.Text(V.Local.sRet.Trim)
+	Gui.SS_Form1.txt2_EndWC.Text(V.Local.sRet.Trim)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_txt_BegWC_Click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: BIR_CP_Workcenter_Dispatch_BC_X.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.cmd_txt_BegWC_Click.End
+
+Program.Sub.cmd_txt2_EndWC_Click.Start
+F.Intrinsic.Control.SetErrorHandler("cmd_txt2_EndWC_Click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+V.Local.sRet.Declare(String)
+
+F.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+F.Intrinsic.UI.Browser(400,"",V.Local.sRet)
+
+'If selected item not blank, then display within the text field
+F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	Gui.SS_Form1.txt2_EndWC.Text(V.Local.sRet.Trim)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_txt2_EndWC_Click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: BIR_CP_Workcenter_Dispatch_BC_X.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.cmd_txt2_EndWC_Click.End
+
+Program.Sub.cmd_lvw1_WcAdd_Click.Start
+F.Intrinsic.Control.SetErrorHandler("cmd_lvw1_WcAdd_Click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'If range text fields aren't blank, then add whatever is in them, to the listview.
+F.Intrinsic.control.If(V.screen.SS_Form1!txt_BegWC.Text,<>,"")
+F.Intrinsic.Control.AndIf(V.Screen.SS_Form1!txt2_EndWC.Text,<>,"")
+	F.Intrinsic.Math.Add(V.global.iKey,1,V.global.iKey)
+	Gui.SS_Form1.lvw1_Wc.AddListItem(V.global.iKey,V.Screen.SS_Form1!txt_BegWC.Text)
+	Gui.SS_Form1.lvw1_Wc.SetListItemSubItemText(V.global.iKey,1,V.Screen.SS_Form1!txt2_EndWC.Text)
+	Gui.SS_Form1.txt_BegWC.Text("")
+	Gui.SS_Form1.txt2_EndWC.Text("")
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_lvw1_WcAdd_Click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: BIR_CP_Workcenter_Dispatch_BC_X.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.cmd_lvw1_WcAdd_Click.End
+
+Program.Sub.cmd_lvw1_WcDelete_Click.Start
+F.Intrinsic.Control.SetErrorHandler("cmd_lvw1_WcDelete_Click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+V.Local.iKey.Declare(Long)
+'Deletes selected item from list view
+V.Local.iKey.Set(V.Screen.SS_Form1!lvw1_Wc.SelectedItemKey)
+Gui.SS_Form1.lvw1_Wc.RemoveItem(V.Local.iKey)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_lvw1_WcDelete_Click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: BIR_CP_Workcenter_Dispatch_BC_X.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.cmd_lvw1_WcDelete_Click.End
+
+Program.Sub.cmd_lvw1_WcClear_Click.Start
+F.Intrinsic.Control.SetErrorHandler("cmd_lvw1_WcClear_Click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Clears all items from listview
+Gui.SS_Form1.lvw1_Wc.ClearItems
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_lvw1_WcClear_Click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: BIR_CP_Workcenter_Dispatch_BC_X.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.cmd_lvw1_WcClear_Click.End
+
+Program.Sub.cmd1_Print_Click.Start
+F.Intrinsic.Control.SetErrorHandler("cmd1_Print_Click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+V.Local.sLaunchFile.Declare(String)
+V.Local.sParams.Declare(String)
+V.Local.sRows.Declare(String)
+V.Local.sSQL.Declare(String)
+V.Local.sRange.Declare(String)
+V.Local.sRet.Declare(String)
+V.Local.i.Declare(Long)
+V.Local.iOrd.Declare(Long)
+V.Local.iWCNum.Declare(Long)
+V.Local.bExists.Declare(Boolean)
+
+Gui.SS_Form1..Visible(False)
+Function.Global.BI.GetRunID(V.Global.iBIRUNID)
+
+F.Intrinsic.Control.If(V.Ambient.IsInIDE,=,True)
+        F.Global.BI.StartLogging(V.global.iBIRUNID,2313,0,"",V.global.iLOGID)
+F.Intrinsic.Control.Else
+        F.Global.BI.StartLogging(V.global.iBIRUNID,-1,-1,"",V.global.iLOGID)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.String.Format(V.Screen.SS_Form1!dtp_Beg.Value,"mmddyy",V.Global.sDate1)
+F.Intrinsic.String.Format(V.Screen.SS_Form1!dtp_End.Value,"mmddyy",V.Global.sDate2)
+
+V.uGlobal.uWC.Redim(-1,-1)
+V.uGlobal.uMachines.Redim(-1,-1)
+
+F.Intrinsic.Control.If(V.Screen.SS_Form1!chk1_AllWC.Value,<>,1)
+	'Loops through listview for Workcenter ranges and processes ranges through the gsrpm.exe
+	Gui.SS_Form1.lvw1_WC.RetrieveAllListItems(V.Local.sRows)
+	F.Intrinsic.Control.If(V.Local.sRows,<>,"***NORETURN***")
+		F.Intrinsic.String.Split(V.Local.sRows,"*!*",V.Local.sRows)
+		F.Intrinsic.Control.For(V.Local.i,0,V.Local.sRows.UBound,1)
+			Gui.SS_Form1.lvw1_Wc.RetrieveItemOrdinal(V.Local.sRows(V.Local.i),V.Local.iOrd)
+			V.Local.sRange.Set(V.Screen.SS_Form1!lvw1_WC.ListItemTextExtended(V.Local.iOrd))
+			'Create a new work center parameter for each WC found within the query below.
+			F.Intrinsic.Control.If(V.Local.sRange,<>,"")
+				F.Intrinsic.Math.Add(V.Global.iRange,1,V.Global.iRange)
+				F.Intrinsic.String.Split(V.Local.sRange,"*!*",V.Local.sRange)
+				'These range values will be passed as a paramter to Crystal to display all ranges pulled from the listview
+				F.Intrinsic.String.Build("{0} - {1}",V.Local.sRange(0),V.Local.sRange(1),V.Global.sMultiWORange)
+				F.Intrinsic.String.Build("SELECT WC AS MACHINE FROM APSV3_WCMASTER WHERE WC BETWEEN '{0}' AND '{1}' ORDER BY WC",V.Local.sRange(0),V.Local.sRange(1),V.Local.sSQL)
+				F.ODBC.Connection!conx.OpenRecordsetRO("rst",V.Local.sSQL)
+				F.Intrinsic.Control.If(V.ODBC.conx!rst.EOF,=,False)
+					F.Intrinsic.Variable.LoadUDTFromRecordset("conx","rst","V.uGlobal.uMachines",True,1000)
+				F.Intrinsic.Control.EndIf
+			F.ODBC.conx!rst.Close
+			F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.Next(V.Local.i)
+
+	'Deletes any duplicate work centers
+	F.Intrinsic.Variable.UDTMultiFlagDuplicates(V.uGlobal.uMachines!MACHINE)
+	F.Intrinsic.Variable.UDTDeleteFlagged(V.uGlobal.uMachines)
+
+	'Build the Work centers portion of the launch file
+	F.Intrinsic.Control.For(V.Local.i,V.uGlobal.uMachines.LBound,V.uGlobal.uMachines.UBound,1)
+		F.Intrinsic.Control.If(V.Global.sRange,=,"")
+			F.Intrinsic.String.Build("WC{0}::{1}",V.Local.iWCNum,V.uGlobal.uMachines(V.Local.i)!MACHINE,V.Global.sRange)
+			F.Intrinsic.Math.Add(V.Local.iWCNum,1,V.Local.iWCNum)
+		F.Intrinsic.Control.Else
+			F.Intrinsic.String.Build("{0}{1}WC{2}::{3}",V.Global.sRange,V.Ambient.NewLine,V.Local.iWCNum,V.uGlobal.uMachines(V.Local.i)!MACHINE,V.Global.sRange)
+			F.Intrinsic.Math.Add(V.Local.iWCNum,1,V.Local.iWCNum)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Next(V.Local.i)
+	'setting how many workcenters that are put in the lauch file.
+	V.Global.iWCNum.Set(V.Local.iWCNum)
+	'Calling GSRPM
+	F.Intrinsic.Control.CallSub(Launchprogram)
+	F.Intrinsic.Control.CallSub(Loadrst)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Else
+
+	'Else if All Workcenters checked, build a list of all the workcenter names for the launch file.
+	F.ODBC.Connection!conx.OpenRecordsetRO("rst","SELECT WC AS MACHINE FROM APSV3_WCMASTER ORDER BY WC")
+	F.Intrinsic.Control.If(V.ODBC.conx!rst.EOF,=,False)
+		V.Global.iWCNum.Set(1)
+		F.Intrinsic.Control.DoUntil(V.ODBC.conx!rst.EOF,=,True)
+			F.Intrinsic.Control.If(V.Global.sRange,=,"")
+				F.Intrinsic.String.Build("WC{0}::{1}",V.Local.iWCNum,V.ODBC.conx!rst.FieldValTrim!MACHINE,V.Global.sRange)
+				F.Intrinsic.Math.Add(V.Local.iWCNum,1,V.Local.iWCNum)
+			F.Intrinsic.Control.Else
+				F.Intrinsic.String.Build("{0}{1}WC{2}::{3}",V.Global.sRange,V.Ambient.NewLine,V.Local.iWCNum,V.ODBC.conx!rst.FieldValTrim!MACHINE,V.Global.sRange)
+				F.Intrinsic.Math.Add(V.Local.iWCNum,1,V.Local.iWCNum)
+			F.Intrinsic.Control.EndIf
+		F.ODBC.conx!rst.MoveNext
+		F.Intrinsic.Control.Loop
+	F.Intrinsic.Control.EndIf
+	F.ODBC.conx!rst.Close
+	'setting how many workcenters that are put in the lauch file.
+	F.Intrinsic.Control.CallSub(Launchprogram)
+	F.Intrinsic.Control.CallSub(Loadrst)
+F.Intrinsic.Control.EndIf
+
+F.Global.BI.StopLogging(V.Global.iLOGID)
+F.Intrinsic.Control.CallSub(Callbi)
+F.Intrinsic.Control.CallSub(Ss_form1_unload)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd1_Print_Click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: BIR_CP_Workcenter_Dispatch_BC_X.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.cmd1_Print_Click.End
+
+Program.Sub.LaunchProgram.Start
+F.Intrinsic.Control.SetErrorHandler("LaunchProgram_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+V.Local.sLaunchFile.Declare(String)
+V.Local.sParams.Declare(String)
+V.Local.sDate1.Declare(String)
+V.Local.sDate2.Declare(String)
+V.Local.sRows.Declare(String)
+V.Local.sArg.Declare(String)
+V.Local.sPrgmPath.Declare(String)
+V.Local.sUser.Declare(String)
+V.Local.sRm.Declare(String)
+V.Local.sCC.Declare(String)
+V.Local.sRet.Declare(String)
+V.Local.bExists.Declare(Boolean)
+
+'Pull in the the parameters from the front end to create a launch file
+F.Intrinsic.String.Build("{0}\DL120314151700.launch",V.Caller.LocalGSSTempDir,V.Local.sLaunchFile)
+F.Intrinsic.File.Exists(V.Local.sLaunchFile,V.Local.bExists)
+F.Intrinsic.Control.If(V.Local.bExists,=,True)
+	F.Intrinsic.File.DeleteFile(V.Local.sLaunchFile)
+F.Intrinsic.Control.EndIf
+
+'Building .Luanch file
+F.Intrinsic.String.Build("REPORTMODE::400{0}",V.Ambient.NewLine,V.Local.sParams)
+F.Intrinsic.String.Build("{0}{1}{2}",V.Local.sParams,V.Global.sRange,V.Local.sParams)
+F.Intrinsic.String.Build("{0}STARTDATE::{1}{2}",V.Local.sParams,V.Global.sDate1,V.Ambient.NewLine,V.Local.sParams)
+F.Intrinsic.String.Build("{0}ENDDATE::{1}{2}",V.Local.sParams,V.Global.sDate2,V.Ambient.NewLine,V.Local.sParams)
+F.Intrinsic.String.Build("{0}JOBDESC::0{1}",V.Local.sParams,V.Ambient.NewLine,V.Local.sParams)
+F.Intrinsic.String.Build("{0}DETAILHRS::1{1}",V.Local.sParams,V.Ambient.NewLine,V.Local.sParams)
+F.Intrinsic.String.Build("{0}PREVSEQ::1{1}",V.Local.sParams,V.Ambient.NewLine,V.Local.sParams)
+F.Intrinsic.String.Build("{0}PREVSEQOPEN::1{1}",V.Local.sParams,V.Ambient.NewLine,V.Local.sParams)
+F.Intrinsic.String.Build("{0}EXCLFORECAST::0{1}",V.Local.sParams,V.Ambient.NewLine,V.Local.sParams)
+F.Intrinsic.String.Build("{0}RUNID::{1}",V.Local.sParams,V.Global.iBIRUNID,V.Local.sParams)
+
+F.Intrinsic.File.String2File(V.Local.sLaunchFile,V.Local.sParams)
+
+'Padding command line params for correct positions
+F.Intrinsic.String.RPad(V.Caller.CompanyCode," ",3,V.Local.sCC)
+F.Intrinsic.String.RPad(V.Caller.User," ",8,V.Local.sUser)
+F.Intrinsic.String.RPad("-2"," ",2,V.Local.sRm)
+
+
+'Command line params to pass to program being called
+Function.Intrinsic.String.Build("{0}{1} {2} {3}\DL120314151700.launch",V.Local.sCC,V.Local.sRm,V.Local.sUser,V.Caller.LocalGSSTempDir,V.Local.sArg)
+
+'Mapping to user's plugins dir for the GSRPM.exe
+F.Intrinsic.String.Build("{0}\GSRPM.exe",V.Caller.PluginsDir,V.Local.sPrgmPath)
+
+'Calling program with command line params
+'F.Intrinsic.Control.If(V.uGlobal.uMachines.UBound,<>,-1)
+'calliing call if any workcenter have been entered into the paramters.
+F.Intrinsic.Control.If(V.Global.iWCNum,>=,0)
+	F.Intrinsic.Task.ShellExecSync(V.Caller.Handle,"OPEN",V.Local.sPrgmPath,V.Local.sArg,"",0)
+F.Intrinsic.Control.EndIf
+V.Global.sRange.Set("")
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("LaunchProgram_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: BIR_CP_Workcenter_Dispatch_BC_X.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.LaunchProgram.End
+
+Program.Sub.LoadRst.Start
+F.Intrinsic.Control.SetErrorHandler("LoadRst_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+V.Local.sSQL.Declare(String)
+'F.Intrinsic.Debug.InvokeDebugger
+'F.Intrinsic.Debug.Stop
+
+'Loading Y table records into UDT, then clearing out the Y Table.
+F.Intrinsic.String.Build("SELECT RUNID, GROUPING, JOB, SUFFIX, right(rtrim(('000000'+seq)),6) as SEQ, PRIORITY, LHR, PART, JOBOPDESC, CUSTOMERNAME, CUSTNO, WC, QTYREM, QTYORIG, ESTHOURS, REMHOURS, SEQSTARTDATE, SEQDUEDATE, JOBDUEDATE, PREVSEQINFO, READY FROM Y_APS_DISPATCH  WHERE RUNID = '{0}'",V.Global.iBIRUNID,V.Local.sSQL)
+F.ODBC.Connection!conx.OpenRecordsetRW("rst",V.Local.sSQL)
+F.Intrinsic.Control.If(V.ODBC.conx!rst.EOF,<>,True)
+	F.Intrinsic.Variable.LoadUDTFromRecordset("conx","rst","V.uGlobal.uWC",False,0)
+
+	F.Intrinsic.String.Build("DELETE FROM Y_APS_DISPATCH WHERE RUNID = '{0}'",V.Global.iBIRUNID,V.Local.sSQL)
+	F.ODBC.Connection!conx.Execute(V.Local.sSQL)
+
+	'Setting BIRUNIND values within UDT
+	F.Intrinsic.Control.If(V.uGlobal.uWC.UBound,<>,-1)
+		'Loading UDT records into Z table
+		F.ODBC.Connection!conx.OpenRecordsetRW("rst2","Z_APS_DISPATCH")
+		F.Intrinsic.Variable.SaveUDTToRecordSet("conx","rst2","V.uGlobal.uWC")
+
+		F.ODBC.conx!rst2.Close
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+F.ODBC.conx!rst.Close
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("LoadRst_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: BIR_CP_Workcenter_Dispatch_BC_X.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.LoadRst.End
+
+Program.Sub.CallBI.Start
+F.Intrinsic.Control.SetErrorHandler("CallBI_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+V.Local.sParams.Declare(String)
+V.Local.sVals.Declare(String)
+V.Local.sDateRange.Declare(String)
+V.Local.sDesc.Declare(String)
+V.Local.iRet.Declare(Long)
+
+'Gathers parameter names and values and then passes them to the report
+F.Intrinsic.String.Build("{0} - {1}",V.Screen.SS_Form1!dtp_Beg.Value,V.Screen.SS_Form1!dtp_End.Value,V.Local.sDateRange)
+
+V.Local.sParams.Set("PRINT_ALL*!*MultipleRangeSelected*!*DateRange*!*MultiRangeFlag")
+F.Intrinsic.Control.If(V.Global.iRange,>,1)
+	V.Global.sMultiWORange.Set("Multi")
+	F.Intrinsic.String.Build("{0}*!*{1}*!*{2}*!*1",V.Screen.SS_Form1!chk1_AllWC.Value,V.Global.sMultiWORange,V.Local.sDateRange,V.Local.sVals)
+F.Intrinsic.Control.Else
+	F.Intrinsic.Control.If(V.Screen.SS_Form1!chk1_AllWC.Value,<>,1)
+		F.Intrinsic.String.Build("{0}*!*{1}*!*{2}*!*2",V.Screen.SS_Form1!chk1_AllWC.Value,V.Global.sMultiWORange,V.Local.sDateRange,V.Local.sVals)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.Build("{0}*!*{1}*!*{2}*!*0",V.Screen.SS_Form1!chk1_AllWC.Value,V.Global.sMultiWORange,V.Local.sDateRange,V.Local.sVals)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+F.Global.BI.RunReportPreProcessor(V.Global.iBIRUNID,V.Global.iLOGID,V.Local.sParams,V.Local.sVals,"",-1,True,"",-1,"",-1,"","",V.Local.iRet)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("CallBI_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: BIR_CP_Workcenter_Dispatch_BC_X.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.CallBI.End
+
+Program.Sub.txt_BegWC_GotFocus.Start
+F.Intrinsic.Control.SetErrorHandler("txt_BegWC_GotFocus_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+Gui.SS_Form1.txt_BegWC.SelectAll
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("txt_BegWC_GotFocus_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: BIR_CP_Workcenter_Dispatch_BC_X.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.txt_BegWC_GotFocus.End
+
+Program.Sub.txt_BegWC_LostFocus.Start
+F.Intrinsic.Control.SetErrorHandler("txt_BegWC_LostFocus_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'lost focus click event
+Gui.SS_Form1.txt2_EndWC.Text(V.Screen.SS_Form1!txt_BegWC.Text)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("txt_BegWC_LostFocus_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: BIR_CP_Workcenter_Dispatch_BC_X.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.txt_BegWC_LostFocus.End
+
+Program.Sub.txt2_EndWC_GotFocus.Start
+F.Intrinsic.Control.SetErrorHandler("txt2_EndWC_GotFocus_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Got focus event
+Gui.SS_Form1.txt2_EndWC.SelectAll
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("txt2_EndWC_GotFocus_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: BIR_CP_Workcenter_Dispatch_BC_X.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.txt2_EndWC_GotFocus.End
+
+Program.Sub.chk1_AllWC_Click.Start
+F.Intrinsic.Control.SetErrorHandler("chk1_AllWC_Click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'If All Workcenters is checked, disabled certain screen controls.
+F.Intrinsic.Control.If(V.Screen.SS_Form1!chk1_AllWC.Value,=,1)
+	Gui.SS_Form1.txt_BegWC.Text("")
+	Gui.SS_Form1.txt2_EndWC.Text("")
+	Gui.SS_Form1.txt_BegWC.Enabled(False)
+	Gui.SS_Form1.txt2_EndWC.Enabled(False)
+	Gui.SS_Form1.cmd_lvw1_WcAdd.Enabled(False)
+	Gui.SS_Form1.cmd_txt_BegWC.Enabled(False)
+	Gui.SS_Form1.cmd_txt2_EndWC.Enabled(False)
+	Gui.SS_Form1.lvw1_Wc.ClearItems
+F.Intrinsic.Control.Else
+	Gui.SS_Form1.txt_BegWC.Enabled(True)
+	Gui.SS_Form1.txt2_EndWC.Enabled(True)
+	Gui.SS_Form1.cmd_lvw1_WcAdd.Enabled(True)
+	Gui.SS_Form1.cmd_txt_BegWC.Enabled(True)
+	Gui.SS_Form1.cmd_txt2_EndWC.Enabled(True)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("chk1_AllWC_Click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: BIR_CP_Workcenter_Dispatch_BC_X.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.chk1_AllWC_Click.End
+
+Program.Sub.Comments.Start
+${$0$}$Dev_BIR_CP_Workcenter_Dispatch$}$AGM$}$3/19/2015
+${$3$}$0$}$$}$0$}$-1$}$$}$12:00:00 AM$}$'Coded by AGM
+'Date 3/19/2015
+'Report id:  2313, CP_Workcenter_Dispatch_BC_X_2315.RPT
+'4/1/2015 AGM: Taking out Descrition drop down list.
+GAB Front end will no longer have the Job/Sequence option drop down list
+Instead, Crystal will display the Sequence description.
+
+*********************
+SQL Changes
+*********************
+GSRPM.exe will generate the user data onto Y_APS_DISPATCH
+
+GAB will pull the Y Table data into the z table.
+Z table has been re-written
+Crystal has been redesigned and now loads the new z table
+Program.Sub.Comments.End
+Program.Sub.ScreenSS.Start
+SS_Form1{{CAPTION::Workcenter Dispatch
+SS_Form1.CTRL{{NAME::dtp_Beg\\TYPE::6\\CAPTION::Beginning Date\\TABSTOP::1\\GROUP::1\\BROWSER::0\\INTL::61200\\SIZE::1
+SS_Form1.CTRL{{NAME::dtp_End\\TYPE::6\\CAPTION::Ending Date\\TABSTOP::2\\GROUP::1\\BROWSER::0\\INTL::213100\\SIZE::1
+SS_Form1.CTRL{{NAME::txt_BegWC\\TYPE::2\\CAPTION::Beginning Workcenter\\RANGE::lvw1_Wc\\TABSTOP::3\\GROUP::2\\BROWSER::1\\INTL::64800\\SIZE::1
+SS_Form1.CTRL{{NAME::txt2_EndWC\\TYPE::2\\CAPTION::Ending Workcenter\\RANGE::lvw1_Wc\\TABSTOP::4\\GROUP::2\\BROWSER::1\\INTL::217200\\SIZE::1
+SS_Form1.CTRL{{NAME::chk1_AllWC\\TYPE::9\\CAPTION::All Workcenters\\TABSTOP::5\\GROUP::-1\\SUBGROUP::1\\BROWSER::0\\INTL::23700\\SIZE::2
+SS_Form1.CTRL{{NAME::lvw1_Wc\\TYPE::7\\GROUP::-1\\BROWSER::0\\SIZE::1
+SS_Form1.CTRL{{NAME::cmd1_Print\\TYPE::5\\CAPTION::Print\\TABSTOP::6\\GROUP::-1\\BROWSER::0\\INTL::452800\\SIZE::1
+
+Program.Sub.ScreenSS.End
+
